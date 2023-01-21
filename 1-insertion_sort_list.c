@@ -1,70 +1,42 @@
-#include <stdio.h>
 #include "sort.h"
 
 /**
- * sortedInsert - insert the sorted element in order
- *
- * @sorted: sorted list
- *
- * @newNode: node to verify for insertion
- *
- * Return: sorted values
- */
-
-void sortedInsert(listint_t **sorted, listint_t *newNode)
-{
-	listint_t *current;
-
-	if (*sorted == NULL)
-		*sorted = newNode;
-
-	else if ((*sorted)->n >= newNode->n)
-	{
-		newNode->next = *sorted;
-		newNode->next->prev = newNode;
-		*sorted = newNode;
-	}
-
-	else
-	{
-		current = *sorted;
-		while (current->next != NULL && current->next->n < newNode->n)
-			current = current->next;
-
-		newNode->next = current->next;
-
-		if (current->next != NULL)
-			newNode->next->prev = newNode;
-
-		current->next = newNode;
-		newNode->prev = current;
-	}
-}
-
-/**
- * insertion_sort_list - algorithm to sort list using insertion
- * @list: doubly linked list to be sorted
- *
- * Return: sorted list
+ * insertion_sort_list - function that sorts a doubly linked list
+ *                       of integers in ascending order using the Insertion
+ *                       sort algorithm
+ * @list: doubly linked list
+ * Return: void
  */
 
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *sorted = NULL;
+	listint_t *node = NULL, *tmp = NULL;
 
-	listint_t *current = *list;
+	if (list == NULL || *list == NULL || (*list)->next == NULL)
+		return;
 
-	while (current != NULL)
+	node = *list;
+	node = node->next;
+	while (node)
 	{
-		listint_t *next = current->next;
-
-		current->prev = current->next = NULL;
-
-		sortedInsert(&sorted, current);
-		print_list(*list);
-
-		current = next;
+		while (node->prev && node->n < (node->prev)->n)
+		{
+			tmp = node;
+			if (node->next)
+				(node->next)->prev = tmp->prev;
+			(node->prev)->next = tmp->next;
+			node = node->prev;
+			tmp->prev = node->prev;
+			tmp->next = node;
+			if (node->prev)
+				(node->prev)->next = tmp;
+			node->prev = tmp;
+			if (tmp->prev == NULL)
+				*list = tmp;
+			print_list(*list);
+			node = node->prev;
+		}
+		node = node->next;
 	}
 
-	*list = sorted;
 }
