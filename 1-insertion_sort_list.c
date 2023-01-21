@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "sort.h"
 
-
 /**
  * sortedInsert - insert the sorted element in order
  *
