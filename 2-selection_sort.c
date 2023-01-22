@@ -8,7 +8,7 @@
  *
  * Return: swapped values
  */
-
+/*
 void swap(int *xp, int *yp)
 {
 	int tmp = *xp;
@@ -16,7 +16,7 @@ void swap(int *xp, int *yp)
 	*yp = tmp;
 }
 
-
+*/
 /**
  * selection_sort - algorithm to sort an array
  * @array: array of unsorted values
@@ -27,6 +27,7 @@ void swap(int *xp, int *yp)
 
 void selection_sort(int *array, size_t size)
 {
+	int tmp = 0;
 	size_t i, j, min;
 
 	if (array == NULL || size == 0)
@@ -44,7 +45,11 @@ void selection_sort(int *array, size_t size)
 		}
 
 		if (min != i)
-			swap(&array[min], &array[i]);
-		print_array(array, size);
+		{
+			tmp = array[i];
+			array[i] = array[min];
+			array[min] = tmp;
+			print_array(array, size);
+		}
 	}
 }
