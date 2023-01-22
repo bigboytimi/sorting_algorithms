@@ -2,22 +2,6 @@
 #include "sort.h"
 
 /**
- * swap - swap two values
- * @xp: first value
- * @yp: second value
- *
- * Return: swapped values
- */
-/*
-void swap(int *xp, int *yp)
-{
-	int tmp = *xp;
-	*xp = *yp;
-	*yp = tmp;
-}
-
-*/
-/**
  * selection_sort - algorithm to sort an array
  * @array: array of unsorted values
  * @size: size of array
