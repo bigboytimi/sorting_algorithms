@@ -1,4 +1,5 @@
 #include "sort.h"
+#include <stdio.h>
 
 /**
  * shell_sort - A function tat sorts an array usin shell algorithm.
@@ -6,6 +7,7 @@
  * @size: The length of the array.
  * Return: Nothing.
  */
+
 void shell_sort(int *array, size_t size)
 {
 	unsigned int i = 0, j = 0, gap = 0;
