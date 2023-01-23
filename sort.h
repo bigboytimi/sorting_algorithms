@@ -1,6 +1,5 @@
 #ifndef SORT_H
 #define SORT_H
-#include <stdlib.h>
 #include <stddef.h>
 
 /**
@@ -28,4 +27,5 @@ void shell_sort(int *array, size_t size);
 void quick_s(int *array, int lo, int hi, size_t size);
 int partition(int *array, int lo, int hi, size_t size);
 void cocktail_sort_list(listint_t **list);
+
 #endif /* SORT_H */
