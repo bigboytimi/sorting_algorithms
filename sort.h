@@ -37,4 +37,5 @@ void print_left_right(int *array, int size, int first, int mid);
 void sift_down(int *array, size_t size, size_t index, size_t nth);
 void heap_sort(int *array, size_t size);
 void radix_sort(int *array, size_t size);
+void quick_sort_hoare(int *array, size_t size);
 #endif /* SORT_H */
